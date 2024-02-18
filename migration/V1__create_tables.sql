@@ -10,4 +10,3 @@ VALUES (1, 'John'),
        (2, 'Jane'),
        (3, 'Alice');
 
-DROP TABLE new
