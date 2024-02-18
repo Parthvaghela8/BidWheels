@@ -16,26 +16,28 @@ CREATE TABLE Address (
  
 -- Add CategoryID to Shipments Table
 ALTER TABLE Shipments
-ADD COLUMN CategoryID INT,
-ADD FOREIGN KEY (CategoryID) REFERENCES ShipmentCategories(CategoryID);
+ADD CategoryID INT;
 
-ALTER TABLE Shipments
-ADD COLUMN CategoryID INT;
- 
 -- Add Foreign Key Constraint
 ALTER TABLE Shipments
 ADD CONSTRAINT fk_shipments_category
 FOREIGN KEY (CategoryID) REFERENCES ShipmentCategories(CategoryID);
 
 ALTER TABLE Shipments
-ADD COLUMN ImageData VARBINARY(MAX);
+ADD ImageData VARBINARY(MAX);
 
 -- Alter table to add foreign key constraint for OriginAddressID
+ALTER TABLE Shipments
+ADD OriginAddressID INT;
+
 ALTER TABLE Shipments
 ADD CONSTRAINT FK_Shipments_OriginAddress
 FOREIGN KEY (OriginAddressID) REFERENCES Address(AddressID);
 
 -- Alter table to add foreign key constraint for DestinationAddressID
+ALTER TABLE Shipments
+ADD DestinationAddressID INT;
+
 ALTER TABLE Shipments
 ADD CONSTRAINT FK_Shipments_DestinationAddress
 FOREIGN KEY (DestinationAddressID) REFERENCES Address(AddressID);
