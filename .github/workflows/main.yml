@@ -14,7 +14,7 @@ jobs:
       FLYWAY_PASSWORD: ${{ secrets.DB_BUILD_PASSWORD }}
       FLYWAY_URL: ${{ secrets.DB_BUILD_URL }}
       FLYWAY_CLEAN_DISABLED: false
-      FLYWAY_LOCATIONS: "filesystem:./migration/"
+      FLYWAY_LOCATIONS: "filesystem:./migrations/"
       FLYWAY_CONFIG_FILES: "filesystem:flyway.toml"
 
     steps:
