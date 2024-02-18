@@ -22,8 +22,7 @@ jobs:
           flyway -url="${{ secrets.DB_BUILD_URL }}" \
                  -user="${{ secrets.DB_BUILD_USERNAME }}" \
                  -password="${{ secrets.DB_BUILD_PASSWORD }}" \
-                 -schemas="${{ env.SCHEMAS }}" \
-                 -locations=filesystem:${{ env.MIGRATION_LOCATION }} \
+                 -locations="filesystem:./migrations/ \
                  -info
                  
       - name: Run Flyway migrate
@@ -31,7 +30,6 @@ jobs:
           flyway -url="${{ secrets.DB_BUILD_URL }}" \
                  -user="${{ secrets.DB_BUILD_USERNAME }}" \
                  -password="${{ secrets.DB_BUILD_PASSWORD }}" \
-                 -schemas="${{ env.SCHEMAS }}" \
-                 -locations=filesystem:${{ env.MIGRATION_LOCATION }} \
+                 -locations=filesystem:./migrations/ \
                  -outOfOrder=true \
                  migrate
