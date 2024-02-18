@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      FLYWAY_USER: ${{ secrets.DB_BUILD_USER }}
+      FLYWAY_USER: ${{ secrets.DB_BUILD_USERNAME }}
       FLYWAY_PASSWORD: ${{ secrets.DB_BUILD_PASSWORD }}
       FLYWAY_URL: ${{ secrets.DB_BUILD_URL }}
       FLYWAY_CLEAN_DISABLED: false
