@@ -27,15 +27,11 @@ jobs:
           sudo apt install -y default-jre
           wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/10.7.2/flyway-commandline-10.7.2-linux-x64.tar.gz | tar xvz
           sudo ln -s $(pwd)/flyway-10.7.2/flyway /usr/local/bin/flyway
- 
-      - name: Flyway Baseline
-        run: |
-          flyway baseline \
-            -url="${FLYWAY_URL}" \
-            -user="${FLYWAY_USER}" \
-            -password="${FLYWAY_PASSWORD}" \
-            -configFiles="${FLYWAY_CONFIG_FILES}"
 
+      - name: Flyway repair
+        run: |
+          flyway repair
+     
       - name: Flyway clean
         run: |
           flyway clean
@@ -43,3 +39,7 @@ jobs:
       - name: Flyway Migrate 
         run: |
           flyway migrate \
+             -url="${FLYWAY_URL}" \
+            -user="${FLYWAY_USER}" \
+            -password="${FLYWAY_PASSWORD}" \
+            -configFiles="${FLYWAY_CONFIG_FILES}"
