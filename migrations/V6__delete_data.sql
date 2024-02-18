@@ -1,12 +1,12 @@
-drop table new
+drop new
 go
 
-drop table trial
+drop trial
 go
 
-drop table [dbo].[example_table1]
+drop [dbo].[example_table1]
 go
 
-drop table [dbo].[example_table2]
+drop [dbo].[example_table2]
 go
 
