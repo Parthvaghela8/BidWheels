@@ -13,5 +13,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Add data to README
-      run: echo "New data" >> README.md
+    - name: Update README
+      uses: actions/github-script@v5
+      with:
+        script: |
+          const fs = require('fs');
+          fs.appendFileSync('README.md', 'New data\n', 'utf8');
+
