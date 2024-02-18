@@ -1,43 +1,35 @@
-name: Database deployment CI/CD
+name: flyway
 
 on:
   push:
-    branches:
+    branches: 
       - main
-      
-env:
-  SCHEMAS: dbo
-  MIGRATION_LOCATION: Flyway/migrations
- 
+
 jobs:
-  Deploy:
-    name: Deploy
-    runs-on: ubuntu-20.04         
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      FLYWAY_USER: ${{ secrets.DB_BUILD_USERNAME }}
+      FLYWAY_PASSWORD: ${{ secrets.DB_BUILD_PASSWORD }}
+      FLYWAY_URL: ${{ secrets.DB_BUILD_URL }}
+      FLYWAY_CLEAN_DISABLED: false
+      FLYWAY_LOCATIONS: "filesystem:./migrations/"
+      FLYWAY_CONFIG_FILES: "filesystem:flyway.toml"
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3.0.0
-        
+      - name: Checkout code
+        uses: actions/checkout@v4
+ 
       - name: Setup Flyway CLI
         run: |
-          sudo apt-get update && sudo apt-get install -y unzip
-          wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/8.0.3/flyway-commandline-8.0.3-linux-x64.tar.gz | tar xvz
-          sudo mv flyway-8.0.3 /usr/local/flyway
-          sudo ln -s /usr/local/flyway/flyway /usr/local/bin/flyway
-          flyway -v  # Verify Flyway CLI installation
-      
-      - name: Run Flyway info
-        run: |
-          flyway -url="${{ secrets.DB_BUILD_URL }}" \
-                 -user="${{ secrets.DB_BUILD_USERNAME }}" \
-                 -password="${{ secrets.DB_BUILD_PASSWORD }}" \
-                 -locations="filesystem:./migrations/ \
-                 info
-                 
-      - name: Run Flyway migrate
-        run: |
-          flyway -url="${{ secrets.DB_BUILD_URL }}" \
-                 -user="${{ secrets.DB_BUILD_USERNAME }}" \
-                 -password="${{ secrets.DB_BUILD_PASSWORD }}" \
-                 -locations="filesystem:./migrations/ \
-                 -outOfOrder=true \
-                 migrate
+          sudo apt update
+          sudo apt install -y default-jre
+          wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/10.7.2/flyway-commandline-10.7.2-linux-x64.tar.gz | tar xvz
+          sudo ln -s $(pwd)/flyway-10.7.2/flyway /usr/local/bin/flyway
+ 
+      - name: Flyway Baseline
+        run: flyway baseline
+ 
+      - name: Flyway Migrate 
+        run: flyway migrate
