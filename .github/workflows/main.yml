@@ -6,8 +6,8 @@ on:
       - main
       
 env:
-    SCHEMAS: dbo
-    MIGRATION_LOCATION: Flyway/migrations
+  SCHEMAS: dbo
+  MIGRATION_LOCATION: Flyway/migrations
  
 jobs:
   Deploy:
@@ -22,7 +22,7 @@ jobs:
           flyway -url="${{ secrets.DB_BUILD_URL }}" \
                  -user="${{ secrets.DB_BUILD_USERNAME }}" \
                  -password="${{ secrets.DB_BUILD_PASSWORD }}" \
-                 -locations="filesystem:./migrations/ \
+                 -locations="filesystem:./migrations/" \
                  -info
                  
       - name: Run Flyway migrate
@@ -30,6 +30,6 @@ jobs:
           flyway -url="${{ secrets.DB_BUILD_URL }}" \
                  -user="${{ secrets.DB_BUILD_USERNAME }}" \
                  -password="${{ secrets.DB_BUILD_PASSWORD }}" \
-                 -locations=filesystem:./migrations/ \
+                 -locations="filesystem:./migrations/" \
                  -outOfOrder=true \
                  migrate
