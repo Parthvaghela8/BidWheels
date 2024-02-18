@@ -1,0 +1,37 @@
+name: Database deployment CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      
+env:
+    SCHEMAS: dbo
+    MIGRATION_LOCATION: Flyway/migrations
+ 
+jobs:
+  Deploy:
+    name: Deploy
+    runs-on: ubuntu-20.04         
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.0.0
+        
+      - name: Run Flyway info
+        run: |
+          flyway -url="${{ secrets.DB_BUILD_URL }}" \
+                 -user="${{ secrets.DB_BUILD_USERNAME }}" \
+                 -password="${{ secrets.DB_BUILD_PASSWORD }}" \
+                 -schemas="${{ env.SCHEMAS }}" \
+                 -locations=filesystem:${{ env.MIGRATION_LOCATION }} \
+                 -info
+                 
+      - name: Run Flyway migrate
+        run: |
+          flyway -url="${{ secrets.DB_BUILD_URL }}" \
+                 -user="${{ secrets.DB_BUILD_USERNAME }}" \
+                 -password="${{ secrets.DB_BUILD_PASSWORD }}" \
+                 -schemas="${{ env.SCHEMAS }}" \
+                 -locations=filesystem:${{ env.MIGRATION_LOCATION }} \
+                 -outOfOrder=true \
+                 migrate
