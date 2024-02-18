@@ -35,10 +35,8 @@ VALUES (1, 1, 1, 5, 'Excellent service!'),
        (2, 2, 2, 4, 'Good experience.'),
        (3, 3, 3, 3, 'Could be better.');
 
---Notifications Table:
-INSERT INTO Notifications (NotificationID, UserID, NotificationType, NotificationMessage, Timestamp)
-VALUES (1, 1, 'Alert', 'Shipment delayed', '2024-02-25 09:00:00'),
-       (2, 2, 'Reminder', 'Bid deadline approaching', '2024-02-23 12:00:00'),
-       (3, 3, 'Information', 'Shipment delivered', '2024-02-27 14:00:00');
-
-
+-- Notifications Table:
+INSERT INTO Notifications (NotificationID, UserID, NotificationType, NotificationMessage)
+VALUES (1, 1, 'Alert', 'Shipment delayed'),
+       (2, 2, 'Reminder', 'Bid deadline approaching'),
+       (3, 3, 'Information', 'Shipment delivered');
