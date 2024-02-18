@@ -13,10 +13,14 @@ VALUES
     (2, 'Fragile Items', 'Delicate items requiring careful handling to prevent damage'),
     (3, 'Perishable Goods', 'Items that can spoil or decay if not transported under specific conditions');
 
-
--- Insert records into the Shipments table
-INSERT INTO Shipments (ShipmentID, CustomerID, Origin, Destination, ShipmentDate, DeliveryDate, MaxBidAmount, BidStartTime, BidEndTime, Status, CategoryID, OriginAddressID, DestinationAddressID)
-VALUES 
-    (1, 1, 'New York', 'Los Angeles', '2024-02-20', '2024-02-25', 100.00, '2024-02-20 10:00:00', '2024-02-22 10:00:00', 'Pending', 1, 1, 3),
-    (2, 2, 'Chicago', 'Houston', '2024-02-21', '2024-02-26', 150.00, '2024-02-21 10:00:00', '2024-02-23 10:00:00', 'In Transit', 2, 2, 3),
-    (3, 3, 'Miami', 'Seattle', '2024-02-22', '2024-02-27', 200.00, '2024-02-22 10:00:00', '2024-02-24 10:00:00', 'Delivered', 3, 3, 2);
+--Insert records into Shipments Table
+INSERT INTO Shipments (
+    ShipmentID, CustomerID, Origin, Destination, ShipmentDate, DeliveryDate, MaxBidAmount,
+    BidStartTime, BidEndTime, Status, CategoryID, ImageData, OriginAddressID, DestinationAddressID
+) VALUES 
+    (1, 1, 'New York', 'Los Angeles', '2024-02-20', '2024-02-25', 100.00,
+    '2024-02-20 10:00:00', '2024-02-22 10:00:00', 'Pending', 1, NULL, 1, 3),
+    (2, 2, 'Chicago', 'Houston', '2024-02-21', '2024-02-26', 150.00,
+    '2024-02-21 10:00:00', '2024-02-23 10:00:00', 'In Transit', 2, NULL, 2, 3),
+    (3, 3, 'Miami', 'Seattle', '2024-02-22', '2024-02-27', 200.00,
+    '2024-02-22 10:00:00', '2024-02-24 10:00:00', 'Delivered', 3, NULL, 3, 2);
