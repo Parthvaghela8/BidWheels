@@ -24,6 +24,24 @@ CREATE TABLE Customers (
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
+-- ShipmentCategories Table
+CREATE TABLE ShipmentCategories (
+    CategoryID INT PRIMARY KEY,
+    CategoryName VARCHAR(255),
+    Description TEXT
+);
+
+-- Address Table
+CREATE TABLE Address (
+    AddressID INT PRIMARY KEY,
+    StreetAddress VARCHAR(255),
+    City VARCHAR(255),
+    State VARCHAR(255),
+    PostalCode VARCHAR(20),
+    Latitude DECIMAL(9, 6),
+    Longitude DECIMAL(9, 6)
+);
+
 -- Shipments Table
 CREATE TABLE Shipments (
     ShipmentID INT PRIMARY KEY,
@@ -76,24 +94,6 @@ CREATE TABLE Notifications (
     NotificationMessage TEXT,
     Timestamp TIMESTAMP,
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
-);
-
--- Address Table
-CREATE TABLE Address (
-    AddressID INT PRIMARY KEY,
-    StreetAddress VARCHAR(255),
-    City VARCHAR(255),
-    State VARCHAR(255),
-    PostalCode VARCHAR(20),
-    Latitude DECIMAL(9, 6),
-    Longitude DECIMAL(9, 6)
-);
-
--- ShipmentCategories Table
-CREATE TABLE ShipmentCategories (
-    CategoryID INT PRIMARY KEY,
-    CategoryName VARCHAR(255),
-    Description TEXT
 );
 
 -- FinalShipperForShipment Table
