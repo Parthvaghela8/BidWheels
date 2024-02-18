@@ -14,7 +14,7 @@ jobs:
       FLYWAY_PASSWORD: admin123
       FLYWAY_URL: jdbc:sqlserver://dbbid.cow6bvh9jwad.eu-west-1.rds.amazonaws.com:1433;authentication=sqlPassword;databaseName=DBbid;encrypt=true;trustServerCertificate=true
       FLYWAY_CLEAN_DISABLED: false
-      FLYWAY_LOCATIONS: "filesystem:./migrations/"
+      FLYWAY_LOCATIONS: "filesystem:./migration/"
       FLYWAY_CONFIG_FILES: "filesystem:flyway.toml"
 
     steps:
