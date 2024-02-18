@@ -55,11 +55,12 @@ VALUES
     (2, 1, 2, 5, 'Very satisfied'),
     (3, 2, 1, 3, 'Could be better');
 
--- Insert data into Notifications table
-INSERT INTO Notifications (NotificationID, UserID, NotificationType, NotificationMessage, Timestamp)
+-- Insert data into Notifications table without specifying the Timestamp column
+INSERT INTO Notifications (NotificationID, UserID, NotificationType, NotificationMessage)
 VALUES 
-    (1, 1, 'Info', 'Notification message 1', CURRENT_TIMESTAMP),
-    (2, 2, 'Warning', 'Notification message 2', CURRENT_TIMESTAMP);
+    (1, 1, 'Info', 'Notification message 1'),
+    (2, 2, 'Warning', 'Notification message 2');
+
 
 -- Insert data into FinalShipperForShipment table
 INSERT INTO FinalShipperForShipment (ShipmentID, ShipperID)
