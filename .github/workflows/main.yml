@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      FLYWAY_USER: admin
-      FLYWAY_PASSWORD: admin123
-      FLYWAY_URL: jdbc:sqlserver://dbbid.cow6bvh9jwad.eu-west-1.rds.amazonaws.com:1433;authentication=sqlPassword;databaseName=DBbid;encrypt=true;trustServerCertificate=true
+      FLYWAY_USER: ${{ secrets.DB_BUILD_USER }}
+      FLYWAY_PASSWORD: ${{ secrets.DB_BUILD_PASSWORD }}
+      FLYWAY_URL: ${{ secrets.DB_BUILD_URL }}
       FLYWAY_CLEAN_DISABLED: false
       FLYWAY_LOCATIONS: "filesystem:./migration/"
       FLYWAY_CONFIG_FILES: "filesystem:flyway.toml"
@@ -43,7 +43,3 @@ jobs:
       - name: Flyway Migrate 
         run: |
           flyway migrate \
-            -url="${FLYWAY_URL}" \
-            -user="${FLYWAY_USER}" \
-            -password="${FLYWAY_PASSWORD}" \
-            -locations="${FLYWAY_LOCATIONS}"
