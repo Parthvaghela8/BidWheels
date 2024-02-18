@@ -31,11 +31,7 @@ jobs:
       - name: Flyway repair
         run: |
           flyway repair
-
-      - name: Flyway clean
-        run: |
-          flyway clean
-               
+          
       - name: Flyway Migrate 
         run: |
           flyway migrate \
