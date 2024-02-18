@@ -17,19 +17,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.0.0
         
+      - name: Setup Flyway CLI
+        run: |
+          sudo apt-get update && sudo apt-get install -y unzip
+          wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/8.0.3/flyway-commandline-8.0.3-linux-x64.tar.gz | tar xvz
+          sudo mv flyway-8.0.3 /usr/local/flyway
+          sudo ln -s /usr/local/flyway/flyway /usr/local/bin/flyway
+          flyway -v  # Verify Flyway CLI installation
+      
       - name: Run Flyway info
         run: |
           flyway -url="${{ secrets.DB_BUILD_URL }}" \
                  -user="${{ secrets.DB_BUILD_USERNAME }}" \
                  -password="${{ secrets.DB_BUILD_PASSWORD }}" \
-                 -locations="filesystem:./migrations/" \
-                 -info
+                 -locations="filesystem:./migrations/ \
+                 info
                  
       - name: Run Flyway migrate
         run: |
           flyway -url="${{ secrets.DB_BUILD_URL }}" \
                  -user="${{ secrets.DB_BUILD_USERNAME }}" \
                  -password="${{ secrets.DB_BUILD_PASSWORD }}" \
-                 -locations="filesystem:./migrations/" \
+                 -locations="filesystem:./migrations/ \
                  -outOfOrder=true \
                  migrate
