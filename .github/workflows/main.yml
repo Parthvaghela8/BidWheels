@@ -35,10 +35,6 @@ jobs:
             -user="${FLYWAY_USER}" \
             -password="${FLYWAY_PASSWORD}" \
             -configFiles="${FLYWAY_CONFIG_FILES}"
-
-      - name: Flyway repair
-        run: |
-          flyway repair \
                
       - name: Flyway Migrate 
         run: |
