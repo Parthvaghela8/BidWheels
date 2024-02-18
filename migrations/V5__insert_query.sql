@@ -1,9 +1,9 @@
 -- Insert records into the Address table
 INSERT INTO Address (StreetAddress, City, State, PostalCode, Latitude, Longitude)
 VALUES 
-    ('123 Main St', 'New York', 'NY', '10001', 40.7128, -74.0060),
-    ('456 Elm St', 'Los Angeles', 'CA', '90001', 34.0522, -118.2437),
-    ('789 Oak St', 'Chicago', 'IL', '60601', 41.8781, -87.6298);
+    (1,'123 Main St', 'New York', 'NY', '10001', 40.7128, -74.0060),
+    (2,'456 Elm St', 'Los Angeles', 'CA', '90001', 34.0522, -118.2437),
+    (3,'789 Oak St', 'Chicago', 'IL', '60601', 41.8781, -87.6298);
 
 
 --Insert records into Shipment Categories Table
