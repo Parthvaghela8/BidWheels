@@ -6,6 +6,6 @@ locations = ["filesystem:migrations"]
 
 # Update the URL to connect to your MSSQL server
 
-url = "jdbc:sqlserver://dbbid.cow6bvh9jwad.eu-west-1.rds.amazonaws.com:1433;authentication=sqlPassword;databaseName=dbBidWheels;encrypt=true;trustServerCertificate=true"
+url = "jdbc:sqlserver://dbbid.cow6bvh9jwad.eu-west-1.rds.amazonaws.com:1433;authentication=sqlPassword;databaseName=DBbid;encrypt=true;trustServerCertificate=true"
 user = "admin" 
 password = "admin123"
