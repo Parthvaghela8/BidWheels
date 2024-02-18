@@ -34,7 +34,7 @@ jobs:
             -url="${FLYWAY_URL}" \
             -user="${FLYWAY_USER}" \
             -password="${FLYWAY_PASSWORD}" \
-            #-schema="[dbo].[dbBidWheels]" \
+            -schema="dbo" \
             -configFiles="${FLYWAY_CONFIG_FILES}"
  
       - name: Flyway Migrate 
@@ -43,5 +43,5 @@ jobs:
             -url="${FLYWAY_URL}" \
             -user="${FLYWAY_USER}" \
             -password="${FLYWAY_PASSWORD}" \
-           # -schema="[dbo].[dbBidWheels]" \
+            -schema="dbo" \
             -locations="${FLYWAY_LOCATIONS}"
