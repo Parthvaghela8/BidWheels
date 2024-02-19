@@ -76,18 +76,75 @@ Once the apply is complete, verify that your instance is created in the AWS Cons
 Remember to replace the placeholder values in the Terraform configuration with your actual preferences, and ensure that your AWS credentials are configured on your machine.
  Additionally, always be cautious when working with infrastructure provisioning, especially in production environments.
 
+## Workflow Overview
+ 
+This GitHub Actions workflow automates database migrations using Flyway, enabling you to effortlessly manage database schema changes.
+ 
+## Workflow Script
+ 
+```yaml
+name: flyway
+ 
+on:
+  push:
+    branches:
+      - main
+ 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+ 
+    env:
+      FLYWAY_USER: ${{ secrets.DB_BUILD_USERNAME }}
+      FLYWAY_PASSWORD: ${{ secrets.DB_BUILD_PASSWORD }}
+      FLYWAY_URL: ${{ secrets.DB_BUILD_URL }}
+      FLYWAY_CLEAN_DISABLED: false
+      FLYWAY_LOCATIONS: "filesystem:./migrations/"
+      FLYWAY_CONFIG_FILES: "filesystem:./conf/flyway.toml"
+ 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Flyway CLI
+        run: |
+          sudo apt update
+          sudo apt install -y default-jre
+          wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/7.9.1/flyway-commandline-7.9.1-linux-x64.tar.gz | tar xvz
+          sudo ln -s $(pwd)/flyway-7.9.1/flyway /usr/local/bin/flyway
+ 
+      - name: Flyway Repair
+        run: |
+          flyway repair
 
-#Flyway
-Flyway is a tool that allows you to increase the reliability of deployments by versioning your database. It places changes to your database in version control so that it can be repeated in a new environment. This allows you to repeat deployments in different environments without being concerned about
-Create Database:
-Ensure that you have set up and configured your target database.
+      - name: Flyway Migrate
+        run: |
+          flyway migrate \
+             -url="${FLYWAY_URL}" \
+            -user="${FLYWAY_USER}" \
+            -password="${FLYWAY_PASSWORD}" \
+            -configFiles="${FLYWAY_CONFIG_FILES}"
+```
+ 
+## Workflow Steps
+ 
+1. **Checkout code:** This step checks out the repository code.
+ 
+2. **Setup Flyway CLI:** Installs the required dependencies and sets up Flyway CLI.
+ 
+3. **Create Secrets in GitHub:**
+   - Navigate to your GitHub repository.
+   - Go to the "Settings" tab.
+   - In the left sidebar, click on "Secrets."
+   - Click on "New repository secret" and add the following secrets:
+      - `DB_BUILD_USERNAME`: Your database username.
+      - `DB_BUILD_PASSWORD`: Your database password.
+      - `DB_BUILD_URL`: Your database URL.
+ 
+4. **Flyway Repair:** Repairs the metadata table if necessary.
+ 
+5. **Flyway Migrate:** Executes database migrations using Flyway.
+ 
+## Conclusion
+ 
+You now have a comprehensive setup covering KindnessKettle, AWS CloudFormation deployment, Flyway installation, and GitHub Actions for automating database migrations, with the added step of creating necessary secrets in GitHub Actions for secure storage of sensitive information.
 
-
-<h3>1. Create Database:</h3>
-Ensure that you have set up and configured your target database.
-
-<h3>2. Download and Install Flyway:</h3>
-Download the Flyway Command-Line Interface (CLI) from the official Flyway downloads page. Follow the installation instructions for your operating system.
-
-<h3>3.  Set Up Database Connection:</h3>
-Create a Flyway configuration file (e.g., flyway.conf) or provide configuration parameters via command-line options. Specify the database connection details such as URL, username, and password.
