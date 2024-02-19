@@ -5,7 +5,7 @@ SELECT
     C.CustomerContactNumber,
     S.ShipmentID,
     S.ShipmentDate,
-    S.ImageURL
+    S.ImageURL,
     S.DeliveryDate,
     S.Description AS ShipmentDescription,
 FROM
