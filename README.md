@@ -1,6 +1,6 @@
 Bid Wheels<h1>Bid Wheels( Shipping Bid System )</h1>
 
-![img](https://github.com/Parthvaghela8/BidWheels/blob/main/ERD.png)
+![img](https://github.com/Parthvaghela8/BidWheels/blob/main/bid.png)
 
 <h2>Technology Used : </h2>
 
