@@ -7,7 +7,7 @@ SELECT
     S.ShipmentDate,
     S.ImageURL,
     S.DeliveryDate,
-    S.Description AS ShipmentDescription,
+    S.Description AS ShipmentDescription
 FROM
     Customers C
 JOIN
