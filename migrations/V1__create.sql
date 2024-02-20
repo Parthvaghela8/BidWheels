@@ -1,24 +1,34 @@
 -- Users Table
 CREATE TABLE Users (
     UserID INT PRIMARY KEY IDENTITY(1,1),
-    Username VARCHAR(50) NOT NULL,
     Email VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- UserDetails Table (common details for Shippers and Customers)
+CREATE TABLE UserDetails (
+    UserID INT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Gender VARCHAR(10) NOT NULL,
+    DOB DATE NOT NULL,
+    ContactNumber NUMERIC(10) NOT NULL,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
 -- Shippers Table
 CREATE TABLE Shippers (
     ShipperID INT PRIMARY KEY IDENTITY(1,1),
-    ShipperContactNumber NUMERIC(10) NOT NULL,
     UserID INT,
-    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (UserID) REFERENCES UserDetails(UserID) -- Connect to UserDetails
 );
 
 -- Customers Table
 CREATE TABLE Customers (
     CustomerID INT PRIMARY KEY IDENTITY(1,1),
-    CustomerContactNumber NUMERIC(10) NOT NULL,
     UserID INT,
-    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (UserID) REFERENCES UserDetails(UserID) -- Connect to UserDetails
 );
 
 -- ShipmentCategories Table
