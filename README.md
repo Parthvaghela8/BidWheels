@@ -1,8 +1,8 @@
 Bid Wheels<h1>Bid Wheels( Shipping Bid System )</h1>
 
-![img](https://github.com/Parthvaghela8/BidWheels/blob/main/image.png)
+![img](https://github.com/Parthvaghela8/BidWheels/blob/main/image%20(1).png)
 
-link : https://dbdiagram.io/d/65d43a8aac844320ae892cab
+link : https://dbdiagram.io/d/65d44a57ac844320ae8a74fc
 
 <h2>Technology Used : </h2>
 
