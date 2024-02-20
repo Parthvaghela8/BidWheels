@@ -2,7 +2,7 @@ Bid Wheels<h1>Bid Wheels( Shipping Bid System )</h1>
 
 ![img](https://github.com/Parthvaghela8/BidWheels/blob/main/image%20(1).png)
 
-link : https://dbdiagram.io/d/65d44a57ac844320ae8a74fc
+Link : https://dbdiagram.io/d/65d44a57ac844320ae8a74fc
 
 <h2>Technology Used : </h2>
 
@@ -38,37 +38,34 @@ Before you begin, ensure you have the following tools installed:
 <h2>1.  Initialize Terraform:</h2>
 Run the following command to initialize Terraform:
 
-bash
-Copy code
-terraform init
+
+      terraform init
 Create a main.tf File:
 Create a main.tf file in your project directory and add the following content:
 
-hcl
-Copy code
+
 # main.tf
 
-provider "aws" {
-  region = "us-east-1" # Update with your desired region
-}
+      provider "aws" {
+        region = "us-east-1" # Update with your desired region
+      }
 
-resource "aws_instance" "example_instance" {
-  ami           = "ami-0c55b159cbfafe1f0" # Update with your desired AMI
-  instance_type = "t2.micro"             # Update with your desired instance type
+      resource "aws_instance" "example_instance" {
+        ami           = "ami-0c55b159cbfafe1f0" # Update with your desired AMI
+        instance_type = "t2.micro"             # Update with your desired instance type
 
-  tags = {
-    Name = "example-instance"
-  }
-}
+        tags = {
+          Name = "example-instance"
+        }
+      }
 Adjust the region, ami, and instance_type based on your preferences. The tags block is optional but can be useful for identifying your instances.
 
 <h2>2.  Plan and Apply:</h2>
 Run the following commands to plan and apply the changes:
 
-bash
-Copy code
-terraform plan
-terraform apply
+
+      terraform plan
+      terraform apply
 Confirm the changes by typing yes when prompted.
 
 <h2>3. Verify Instance Creation:</h2>
@@ -84,7 +81,7 @@ This GitHub Actions workflow automates database migrations using Flyway, enablin
  
 ## Workflow Script
  
-```yaml
+```
 name: flyway
  
 on:
