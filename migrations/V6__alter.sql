@@ -1,4 +1,4 @@
 
 
 ALTER TABLE UserDetails
-ALTER COLUMN DOB DateofBirth DATE;
+ALTER DOB DateofBirth DATE;
