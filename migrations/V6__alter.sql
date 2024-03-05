@@ -1,2 +1,1 @@
-ALTER TABLE UserDetails
-RENAME COLUMN DOB to DateofBirth;
+EXEC sp_rename 'UserDetails.DOB', 'DateofBirth', 'COLUMN';
