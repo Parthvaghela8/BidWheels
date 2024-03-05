@@ -1,0 +1,4 @@
+
+
+ALTER TABLE UserDetails
+ALTER COLUMN DOB DateofBirth DATE;
