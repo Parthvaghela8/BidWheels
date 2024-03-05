@@ -1,4 +1,2 @@
-
-
 ALTER TABLE UserDetails
-ALTER DOB DateofBirth DATE;
+RENAME COLUMN DOB to DateofBirth;
