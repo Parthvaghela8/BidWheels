@@ -1,4 +1,4 @@
-- GetAverageRatingOfShipper Function
+--- GetAverageRatingOfShipper Function
 CREATE FUNCTION dbo.get_average_rating_of_shipper (@shipper_id INT)
 RETURNS DECIMAL(5, 2)
 AS
