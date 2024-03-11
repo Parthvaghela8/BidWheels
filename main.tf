@@ -57,8 +57,8 @@ resource "aws_db_instance" "dbbid" {
   allocated_storage      = 20
   storage_type           = "gp2"
   publicly_accessible    = true
-  username               = "admin"
-  password               = "admin123"
+  username               = "${{ secrets.DB_BUILD_USERNAME }}"
+  password               = "${{ secrets.DB_BUILD_PASSWORD }}"
   skip_final_snapshot    = true
   vpc_security_group_ids = [aws_security_group.allow_mssql.id]
   provisioner "local-exec" {
