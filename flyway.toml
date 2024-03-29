@@ -6,6 +6,6 @@ locations = ["filesystem:migrations"]
 
 # Update the URL to connect to your MSSQL server
 
-url = "${{ secrets.DB_BUILD_URL }}"
+url = "${{ secrets.DB_BUILD_NEWURL }}"
 user = "${{ secrets.DB_BUILD_USERNAME }}" 
 password = "${{ secrets.DB_BUILD_PASSWORD }}"
