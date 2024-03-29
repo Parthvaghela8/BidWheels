@@ -12,7 +12,7 @@ jobs:
     env:
       FLYWAY_USER: ${{ secrets.DB_BUILD_USERNAME }}
       FLYWAY_PASSWORD: ${{ secrets.DB_BUILD_PASSWORD }}
-      FLYWAY_URL: ${{ secrets.DB_BUILD_URL }}
+      FLYWAY_URL: ${{ secrets.DB_BUILD_NEWURL }}
       FLYWAY_CLEAN_DISABLED: false
       FLYWAY_LOCATIONS: "filesystem:./migrations/"
       FLYWAY_CONFIG_FILES: "filesystem:flyway.toml"
@@ -35,7 +35,7 @@ jobs:
       - name: Flyway Migrate 
         run: |
           flyway migrate \
-             -url="${FLYWAY_URL}" \
+            -url="${FLYWAY_NEWURL}" \
             -user="${FLYWAY_USER}" \
             -password="${FLYWAY_PASSWORD}" \
             -configFiles="${FLYWAY_CONFIG_FILES}"
