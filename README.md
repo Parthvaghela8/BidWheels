@@ -1,6 +1,6 @@
 Bid Wheels<h1>Bid Wheels( Shipping Bid System )</h1>
 
-![img](https://github.com/Parthvaghela8/BidWheels/blob/main/image%20(1).png)
+![img](https://github.com/Parthvaghela8/BidWheels/blob/main/ER-%20Diagram.png)
 
 Link : https://dbdiagram.io/d/65d44a57ac844320ae8a74fc
 
@@ -145,6 +145,6 @@ jobs:
  
 ## Conclusion
  
-You now have a comprehensive setup covering KindnessKettle, AWS CloudFormation deployment, Flyway installation, and GitHub Actions for automating database migrations, with the added step of creating necessary secrets in GitHub Actions for secure storage of sensitive information.
+You now have a comprehensive setup covering AWS deployment, Flyway installation, and GitHub Actions for automating database migrations, with the added step of creating necessary secrets in GitHub Actions for secure storage of sensitive information.
 
 
